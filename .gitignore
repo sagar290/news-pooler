@@ -1,0 +1,5 @@
+
+vendor/
+go.sum
+config.yml
+.idea

@@ -1,0 +1,79 @@
+{{define "head"}}
+<style>
+
+</style>
+{{end}} {{define "content"}}
+
+
+<section class="section">
+    <div class="container">
+        <div class="columns is-mobile is-centered">
+            <div class="column is-one-third">
+                <div class="box is-clearfix">
+                    <h1 class="title">
+                        Add url
+                    </h1>
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="url" placeholder="url">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="slug" placeholder="slug">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                    </div>
+
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-success is-pulled-right">
+                            Add
+                          </button>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-four-fifths">
+
+                <table class="table is-striped is-fullwidth is-hoverable">
+                    <thead>
+                        <th>#</th>
+                        <th>Slug</th>
+                        <th>Url</th>
+                        <th>Count</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>fb</td>
+                            <td>http://facebook.com</td>
+                            <td>4</td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>fb</td>
+                            <td>http://facebook.com</td>
+                            <td>4</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+{{end}}
