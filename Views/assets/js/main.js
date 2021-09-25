@@ -31,7 +31,7 @@ var app = new Vue({
                 !app.body.description_selector ||
                 !this.isValidURL(app.body.url)
             ) {
-                alert('cant add urls')
+                alert('cant add link')
 
                 return false
             }
