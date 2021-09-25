@@ -5,17 +5,22 @@
 {{end}} {{define "content"}}
 
 
+
 <section class="section">
     <div class="container">
+
+
         <div class="columns is-mobile is-centered">
-            <div class="column is-one-third">
+            <div class="column is-4">
                 <div class="box is-clearfix">
                     <h1 class="title">
                         Add url
                     </h1>
+
+                    <!-- Title -->
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="url" placeholder="url">
+                            <input class="input" type="text" placeholder="title" v-model="body.title">
                             <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                           </span>
@@ -24,10 +29,34 @@
                           </span>
                         </p>
                     </div>
-
+                    <!-- Url  -->
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
-                            <input class="input" type="slug" placeholder="slug">
+                            <input class="input" type="text" placeholder="url" v-model="body.url">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                    </div>
+                    <!-- url selector -->
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="url selector" v-model="body.url_selector">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                    </div>
+                    <!-- Description selector -->
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Description selector" v-model="body.description_selector">
                             <span class="icon is-small is-left">
                             <i class="fas fa-envelope"></i>
                           </span>
@@ -39,41 +68,36 @@
 
                     <div class="field">
                         <p class="control">
-                            <button class="button is-success is-pulled-right">
+                            <button class="button is-success is-pulled-right" v-on:click="addUrl">
                             Add
                           </button>
                         </p>
                     </div>
                 </div>
             </div>
-            <div class="column is-four-fifths">
+            <div class="column is-8 is-flex is-flex-wrap-wrap">
 
-                <table class="table is-striped is-fullwidth is-hoverable">
-                    <thead>
-                        <th>#</th>
-                        <th>Slug</th>
-                        <th>Url</th>
-                        <th>Count</th>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>1</td>
-                            <td>fb</td>
-                            <td>http://facebook.com</td>
-                            <td>4</td>
-                        </tr>
-                        <tr>
-                            <td>2</td>
-                            <td>fb</td>
-                            <td>http://facebook.com</td>
-                            <td>4</td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div v-for="url in urls" class="card" style="width: 240px; margin: 10px;">
+                    <div class="card-image">
+                        <figure class="image is-4by3">
+                            <img v-bind:src="url.thumbnail ? url.thumbnail : 'https://bulma.io/images/placeholders/1280x960.png' " alt="Placeholder image">
+                        </figure>
+                    </div>
+                    <div class="card-content">
 
+                        <div class="content">
+                            $(( url.title ))
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <a href="#" class="card-footer-item">visit</a>
+                        <a href="#" class="card-footer-item">Edit</a>
+                        <a href="#" class="card-footer-item">Delete</a>
+                    </footer>
+                </div>
             </div>
         </div>
-    </div>
 </section>
+
 
 {{end}}

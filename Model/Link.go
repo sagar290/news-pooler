@@ -6,7 +6,8 @@ import (
 
 type Link struct {
 	Id                  int       `gorm:"primaryKey" json:"feed_id"`
-	Title               int64     `json:"title"`
+	Title               string    `gorm:"size:255" json:"title"`
+	Thumbnail           string    `json:"thumbnail"`
 	Url                 string    `json:"url"`
 	UrlSelector         string    `gorm:"size:255" json:"url_selector"`
 	DescriptionSelector string    `gorm:"size:255" json:"description_selector"`

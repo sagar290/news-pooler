@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"html/template"
 	models "news-poolerr/Model"
 	router "news-poolerr/Router"
 	"runtime/debug"
@@ -53,11 +54,20 @@ func main() {
 		Master:       "index",
 		Partials:     []string{"partials/ad"},
 		DisableCache: true,
+		Funcs: template.FuncMap{
+			"siteUrl": func() string {
+				return "http://" + viper.GetString("SITE_HOST") + ":" + viper.GetString("SITE_PORT")
+			},
+		},
 	})
 
-	// register home route
-
 	router.RegisterFrontendRoute(r)
+	router.RegisterApisRoute(r)
 
-	r.Run(":8000")
+	r.Static("/assets/css", "Views/assets/css")
+	r.Static("/assets/js", "Views/assets/js")
+
+	fmt.Println(viper.GetString("SITE_PORT"))
+
+	r.Run(":" + viper.GetString("SITE_PORT"))
 }

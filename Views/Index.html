@@ -4,20 +4,26 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <script src="assets/js/main.js">
-    </script>
     <title>{{.title}}</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-    {{template "head" .}}
+    <link rel="stylesheet" href="assets/css/style.css"> {{template "head" .}}
 </head>
 
 <body>
+    <input name="baseUrl" type="hidden" value="{{ siteUrl }}">
     <div id="app">
-        {{include "layouts/navbar"}} {{template "content" .}}
+        <div class="container">
+            <span> </span> {{include "layouts/navbar"}} {{template "content" .}}
+        </div>
     </div>
-    <!-- <hr> -->
+
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.18.0/axios.min.js">
+    </script>
+    <script src="assets/js/main.js">
+    </script>
 </body>
 
 </html>
