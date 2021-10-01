@@ -1,9 +1,9 @@
 package Structs
 
 type LinkBody struct {
-	Title               string `json:"title"`
-	Url                 string `json:"url"`
-	UrlSelector         string `json:"url_selector"`
-	DescriptionSelector string `json:"description_selector"`
+	Title               string `json:"title" binding:"required"`
+	Url                 string `json:"url" binding:"required"`
+	UrlSelector         string `json:"url_selector" binding:"required"`
+	DescriptionSelector string `json:"description_selector" binding:"required"`
 	UniqueId            string `json:"unique_id"`
 }
