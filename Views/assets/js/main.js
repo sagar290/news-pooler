@@ -37,24 +37,59 @@ var app = new Vue({
             }
 
             axios.post(this.baseUrl + '/api/links', app.body).then(function(result) {
+
                 if (result.data.error) {
-                    // app.errorMsg = score.data.message;
-                } else {
-                    data = result.data;
-                    console.log(result.data);
+                    alert(result.data.error)
+                    return false
                 }
+
+                app.emptyForm();
+                data = result.data;
+                console.log(result.data);
+
+                app.getUlrs();
             });
         },
 
         getUlrs: function() {
             axios.get(this.baseUrl + '/api/links').then(function(result) {
+
                 if (result.data.error) {
                     // app.errorMsg = score.data.message;
-                } else {
-                    app.urls = result.data.data;
-                    console.log(result.data);
+
+                    return false
                 }
+
+                app.urls = result.data.data;
+                console.log(result.data);
+
             });
+        },
+
+        deleteUrl: function(id) {
+
+            axios.delete(this.baseUrl + '/api/links/' + id).then(function(result) {
+
+                if (result.data.error) {
+                    alert(result.data.error)
+                    return false
+                }
+
+                app.emptyForm();
+                data = result.data;
+                console.log(result.data);
+
+                app.getUlrs();
+            });
+        },
+
+        emptyForm: function() {
+            app.body = {
+                title: '',
+                url: '',
+                url_selector: '',
+                description_selector: '',
+            }
         },
 
         isValidURL: function(string) {
