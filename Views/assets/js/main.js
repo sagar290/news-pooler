@@ -5,9 +5,10 @@ var app = new Vue({
         baseUrl: document.querySelector("input[name=baseUrl]").value,
         modal: false,
         body: {
-            feed_id: 0,
+            link_id: 0,
             title: '',
             url: '',
+            section: '',
             url_selector: '',
             description_selector: '',
         },
@@ -28,6 +29,7 @@ var app = new Vue({
         addUrl: function() {
 
             if (!app.body.title ||
+                !app.body.section ||
                 !app.body.url ||
                 !app.body.url_selector ||
                 !app.body.description_selector ||
@@ -76,6 +78,7 @@ var app = new Vue({
 
         updateUrl: function() {
             if (!app.body.title ||
+                !app.body.section ||
                 !app.body.url ||
                 !app.body.url_selector ||
                 !app.body.description_selector ||
@@ -86,7 +89,7 @@ var app = new Vue({
                 return false
             }
 
-            axios.patch(this.baseUrl + '/api/links/' + app.body.feed_id, app.body).then(function(result) {
+            axios.patch(this.baseUrl + '/api/links/' + app.body.link_id, app.body).then(function(result) {
 
                 if (result.data.error) {
                     alert(result.data.error)
@@ -127,6 +130,7 @@ var app = new Vue({
             app.body = {
                 title: '',
                 url: '',
+                section: '',
                 url_selector: '',
                 description_selector: '',
             }
