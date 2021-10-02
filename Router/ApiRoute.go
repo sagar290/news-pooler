@@ -12,8 +12,9 @@ func RegisterApisRoute(r *gin.Engine) {
 	{
 		url.POST("links", Controller.AddLinks)
 		url.GET("links", Controller.GetLinks)
-		url.PATCH("links/:feed_id", Controller.UpdateLink)
-		url.DELETE("links/:feed_id", Controller.DeleteLink)
+		url.GET("links/:link_id", Controller.GetLink)
+		url.PATCH("links/:link_id", Controller.UpdateLink)
+		url.DELETE("links/:link_id", Controller.DeleteLink)
 
 	}
 
