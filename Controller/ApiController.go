@@ -46,7 +46,7 @@ func GetLinks(c *gin.Context) {
 }
 
 func GetLink(c *gin.Context) {
-	link_id := c.Param("feed_id")
+	link_id := c.Param("link_id")
 	var url models.Link
 
 	// convert link_id to int
@@ -77,11 +77,11 @@ func UpdateLink(c *gin.Context) {
 		return
 	}
 
-	feed_id := c.Param("feed_id")
+	link_id := c.Param("link_id")
 	// var url models.Url
 
 	// convert url_id to int
-	id, err := strconv.Atoi(feed_id)
+	id, err := strconv.Atoi(link_id)
 	if err != nil {
 
 		c.JSON(400, gin.H{
@@ -109,13 +109,13 @@ func UpdateLink(c *gin.Context) {
 
 func DeleteLink(c *gin.Context) {
 
-	feed_id := c.Param("feed_id")
+	link_id := c.Param("link_id")
 
-	// convert feed_id to int
-	id, err := strconv.Atoi(feed_id)
+	// convert link_id to int
+	id, err := strconv.Atoi(link_id)
 	if err != nil {
 		c.JSON(400, gin.H{
-			"message": "feed_id type is not int",
+			"message": "link_id type is not int",
 			"data":    nil,
 		})
 		return
