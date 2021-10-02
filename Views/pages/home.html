@@ -41,6 +41,18 @@
                           </span>
                         </p>
                     </div>
+                    <!-- section -->
+                    <div class="field">
+                        <p class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="news section calss or id" v-model="body.section">
+                            <span class="icon is-small is-left">
+                            <i class="fas fa-envelope"></i>
+                          </span>
+                            <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                          </span>
+                        </p>
+                    </div>
                     <!-- url selector -->
                     <div class="field">
                         <p class="control has-icons-left has-icons-right">
@@ -98,7 +110,7 @@
                     <footer class="card-footer">
                         <a class="card-footer-item">View</a>
                         <a class="card-footer-item" v-on:click="editUrl(url)">Edit</a>
-                        <a v-on:click="deleteUrl(url.feed_id)" class="card-footer-item">Delete</a>
+                        <a v-on:click="deleteUrl(url.link_id)" class="card-footer-item">Delete</a>
                     </footer>
                 </div>
             </div>
