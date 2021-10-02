@@ -68,8 +68,14 @@
 
                     <div class="field">
                         <p class="control">
-                            <button class="button is-success is-pulled-right" v-on:click="addUrl">
+                            <button class="button is-success is-pulled-right" v-on:click="addUrl" v-if="!is_edit">
                             Add
+                          </button>
+                            <button class="button is-pulled-left" v-on:click="cancelUrlModal" v-if="is_edit">
+                            Cancel
+                          </button>
+                            <button class="button is-success is-pulled-right" v-on:click="updateUrl" v-if="is_edit">
+                            Update
                           </button>
                         </p>
                     </div>
@@ -91,7 +97,7 @@
                     </div>
                     <footer class="card-footer">
                         <a class="card-footer-item">View</a>
-                        <a class="card-footer-item">Edit</a>
+                        <a class="card-footer-item" v-on:click="editUrl(url)">Edit</a>
                         <a v-on:click="deleteUrl(url.feed_id)" class="card-footer-item">Delete</a>
                     </footer>
                 </div>
