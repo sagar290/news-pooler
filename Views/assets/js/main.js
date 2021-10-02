@@ -5,11 +5,13 @@ var app = new Vue({
         baseUrl: document.querySelector("input[name=baseUrl]").value,
         modal: false,
         body: {
+            feed_id: 0,
             title: '',
             url: '',
             url_selector: '',
             description_selector: '',
         },
+        is_edit: false,
 
         urls: []
 
@@ -64,6 +66,44 @@ var app = new Vue({
                 console.log(result.data);
 
             });
+        },
+
+        editUrl: function(linkData) {
+            console.log('ashche');
+            app.body = linkData;
+            app.is_edit = true;
+        },
+
+        updateUrl: function() {
+            if (!app.body.title ||
+                !app.body.url ||
+                !app.body.url_selector ||
+                !app.body.description_selector ||
+                !this.isValidURL(app.body.url)
+            ) {
+                alert('cant update link')
+
+                return false
+            }
+
+            axios.patch(this.baseUrl + '/api/links/' + app.body.feed_id, app.body).then(function(result) {
+
+                if (result.data.error) {
+                    alert(result.data.error)
+                    return false
+                }
+
+                app.emptyForm();
+                data = result.data;
+                // console.log(result.data);
+                app.is_edit = true;
+                app.getUlrs();
+            });
+        },
+
+        cancelUrlModal: function() {
+            app.is_edit = false;
+            app.emptyForm();
         },
 
         deleteUrl: function(id) {
