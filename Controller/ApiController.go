@@ -69,6 +69,44 @@ func GetLink(c *gin.Context) {
 	})
 }
 
+func UpdateLink(c *gin.Context) {
+	var linkBody structs.LinkBody
+
+	if err := c.ShouldBindJSON(&linkBody); err != nil {
+		c.JSON(422, gin.H{"error": err.Error()})
+		return
+	}
+
+	feed_id := c.Param("feed_id")
+	// var url models.Url
+
+	// convert url_id to int
+	id, err := strconv.Atoi(feed_id)
+	if err != nil {
+
+		c.JSON(400, gin.H{
+			"message": "url_id type is not int",
+			"data":    nil,
+		})
+
+		return
+	}
+
+	url, message := services.UpdateLink(id, linkBody)
+
+	if !url {
+		c.JSON(400, gin.H{
+			"message": message,
+			"data":    nil,
+		})
+	}
+
+	c.JSON(200, gin.H{
+		"message": message,
+		"data":    nil,
+	})
+}
+
 func DeleteLink(c *gin.Context) {
 
 	feed_id := c.Param("feed_id")
