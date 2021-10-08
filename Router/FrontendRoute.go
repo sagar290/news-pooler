@@ -8,6 +8,5 @@ import (
 
 func RegisterFrontendRoute(r *gin.Engine) {
 	r.GET("/", Controller.HomePage)
-	r.GET("/links/:link", Controller.SingleUrlpage)
-
+	r.GET("/links/:link_id", Controller.SingleLinkpage)
 }

@@ -7,3 +7,7 @@ type Feed struct {
 	Title    string `json:"title"`
 	UniqueId string `json:"unique_id"`
 }
+
+type Date struct {
+	Date string `json:"date"`
+}

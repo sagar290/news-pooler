@@ -135,3 +135,31 @@ func DeleteLink(c *gin.Context) {
 		"data":    nil,
 	})
 }
+
+func FeedDates(c *gin.Context)  {
+	var dates []structs.Date
+
+	linkId := c.Param("link_id")
+
+	// convert link_id to int
+	id, _ := strconv.Atoi(linkId)
+
+	dates = services.GetDateList(id)
+
+	c.JSON(200, gin.H{
+		"message": "",
+		"data":    dates,
+	})
+}
+
+func GetFeeds(c *gin.Context)  {
+	var feeds []models.Feed
+	date := c.Param("date")
+
+	feeds = services.GetFeedsByDate(date)
+
+	c.JSON(200, gin.H{
+		"message": "",
+		"data":    feeds,
+	})
+}

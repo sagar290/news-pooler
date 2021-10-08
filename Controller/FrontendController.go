@@ -1,9 +1,8 @@
 package Controller
 
 import (
-	"net/http"
-
 	"github.com/gin-gonic/gin"
+	"net/http"
 )
 
 func HomePage(c *gin.Context) {
@@ -13,8 +12,17 @@ func HomePage(c *gin.Context) {
 	})
 }
 
-func SingleUrlpage(c *gin.Context) {
-	c.HTML(http.StatusOK, "pages/singleurl", gin.H{
+
+type Result struct {
+	Date string
+}
+
+func SingleLinkpage(c *gin.Context) {
+
+	link_id := c.Param("link_id")
+
+ 	c.HTML(http.StatusOK, "pages/singleurl", gin.H{
 		"title": "singleurl",
+		"link_id": link_id,
 	})
 }

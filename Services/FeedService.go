@@ -51,9 +51,24 @@ func StoreFeed(data structs.Feed) {
 		Url:     data.Url,
 		Title:   data.Title,
 	}).FirstOrCreate(&feed)
+}
 
-	// if result.Error != nil {
-	// 	message = "cant update"
-	// }
+
+func GetDateList(linkId int) []structs.Date  {
+	var dates []structs.Date
+	models.Db.Raw("SELECT DISTINCT date FROM feeds WHERE link_id = ? ORDER BY date DESC", linkId).Scan(&dates)
+	return dates
+}
+
+func GetFeedsByDate(date string) []models.Feed  {
+	var feeds []models.Feed
+
+	result := models.Db.Model(&models.Feed{}).Where("date LIKE ?", date).Find(&feeds)
+
+	if result.Error != nil {
+		return feeds
+	}
+
+	return feeds
 
 }
