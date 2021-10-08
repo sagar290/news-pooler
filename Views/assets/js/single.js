@@ -22,7 +22,7 @@ var app = new Vue({
 
         getDates: function() {
 
-            axios.get(this.baseUrl + '/api/links/' + this.linkId + '/dates').then(function(result) {
+            axios.get(`${this.baseUrl}/api/links/${this.linkId}/dates`).then(function(result) {
 
                 if (result.data.error) {
                     alert(result.data.error)
