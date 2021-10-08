@@ -9,4 +9,5 @@ DB_DATABASE: test
 DB_USERNAME: root
 DB_PASSWORD:
 
+#in seconds
 SHEDULE_TIME: 3600
