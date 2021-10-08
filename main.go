@@ -5,8 +5,11 @@ import (
 	"html/template"
 	models "news-poolerr/Model"
 	router "news-poolerr/Router"
+	services "news-poolerr/Services"
 	"runtime/debug"
+	"strconv"
 	"strings"
+	"time"
 
 	gintemplate "github.com/foolin/gin-template"
 	"github.com/gin-gonic/gin"
@@ -60,6 +63,28 @@ func main() {
 			},
 		},
 	})
+
+	// shedule every 1 hour
+	go func() {
+		scheduleTime , _ := strconv.Atoi(viper.GetString("SHEDULE_TIME"))
+
+		links := services.GetLinks()
+
+		defer func() {
+			fmt.Println("finished")
+		}()
+
+		for true {
+
+			for _, link := range links {
+
+				services.FetchNews(link)
+				fmt.Println("fetched finihed for ", link.Title)
+			}
+			
+			time.Sleep(time.Duration(scheduleTime) * time.Second)
+		}
+	}()
 
 	router.RegisterFrontendRoute(r)
 	router.RegisterApisRoute(r)
