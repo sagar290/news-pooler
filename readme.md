@@ -9,7 +9,7 @@ News pooler is a news crawling application. It will crawl news from your given n
 
 # Features
 - Add news link 
-- Connect any sql based database
+- Connect any SQL based database
 - Set crawl schedule time dynamically
 - Filter News by date
 
@@ -23,7 +23,8 @@ News pooler is a news crawling application. It will crawl news from your given n
 - Run `` cp config-example.yml config.yml ``
 - Run `` vim config.yml ``
 - Set the desired value for your configurations and close the vim
-- Run `` go build main.go `` it will create a file call news-pooler
+- Run `` go mod vendor  ``
+- Run `` go build -o news-pooler `` it will create a file call news-pooler
 - Run `` nohup ./news-pooler &`` it will run the application in the background
 - Open the browser and go to your desired port you provided in config.yml file
 
