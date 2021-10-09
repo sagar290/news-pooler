@@ -9,7 +9,7 @@ News pooler is a news crawling application. It will crawl news from your given n
 
 # Features
 - Add news link 
-- Connect any sql based database
+- Connect any SQL based database
 - Set crawl schedule time dynamically
 - Filter News by date
 
