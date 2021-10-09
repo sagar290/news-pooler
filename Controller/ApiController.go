@@ -154,9 +154,13 @@ func FeedDates(c *gin.Context)  {
 
 func GetFeeds(c *gin.Context)  {
 	var feeds []models.Feed
+	linkId := c.Param("link_id")
+
+	// convert link_id to int
+	id, _ := strconv.Atoi(linkId)
 	date := c.Param("date")
 
-	feeds = services.GetFeedsByDate(date)
+	feeds = services.GetFeedsByDate(id, date)
 
 	c.JSON(200, gin.H{
 		"message": "",

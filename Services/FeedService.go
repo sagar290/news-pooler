@@ -60,10 +60,10 @@ func GetDateList(linkId int) []structs.Date  {
 	return dates
 }
 
-func GetFeedsByDate(date string) []models.Feed  {
+func GetFeedsByDate(linkID int, date string) []models.Feed  {
 	var feeds []models.Feed
 
-	result := models.Db.Model(&models.Feed{}).Where("date LIKE ?", date).Find(&feeds)
+	result := models.Db.Model(&models.Feed{}).Where("date LIKE ? AND link_id = ?", date, linkID).Find(&feeds)
 
 	if result.Error != nil {
 		return feeds

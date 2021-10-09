@@ -68,18 +68,16 @@ func main() {
 	go func() {
 		scheduleTime , _ := strconv.Atoi(viper.GetString("SHEDULE_TIME"))
 
-		links := services.GetLinks()
-
 		defer func() {
 			fmt.Println("finished")
 		}()
 
 		for true {
-
+			links := services.GetLinks()
 			for _, link := range links {
 
 				services.FetchNews(link)
-				fmt.Println("fetched finihed for ", link.Title)
+				fmt.Println("fetched finished for", link.Title)
 			}
 			
 			time.Sleep(time.Duration(scheduleTime) * time.Second)
