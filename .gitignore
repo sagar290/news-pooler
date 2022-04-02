@@ -3,3 +3,5 @@ vendor/
 go.sum
 config.yml
 .idea
+app.env
+tmp/

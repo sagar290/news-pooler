@@ -30,19 +30,12 @@ func TryCatch(f func()) func() error {
 }
 
 func init() {
-	viper.SetEnvPrefix("news-poolerr")
-	viper.AutomaticEnv()
 	viper.SetEnvKeyReplacer(strings.NewReplacer("-", "_"))
-	viper.SetConfigName("config")
-	viper.SetConfigType("yaml")
-	viper.AddConfigPath("/etc/news-poolerr/")
-	viper.AddConfigPath("$HOME/.news-poolerr")
 	viper.AddConfigPath(".")
-	err := viper.ReadInConfig() // Find and read the config file
-	if err != nil {             // Handle errors reading the config file
-		panic(fmt.Errorf("Fatal error config file: %w \n", err))
-	}
+	viper.AutomaticEnv()
 
+	AppEnv := viper.GetString("APP_ENV")
+	fmt.Println(AppEnv)
 	// initialize database
 	models.Init()
 }

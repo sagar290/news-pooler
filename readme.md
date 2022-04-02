@@ -20,13 +20,20 @@ News pooler is a news crawling application. It will crawl news from your given n
 # Installations
 - Clone the repository
 - Move to the repository and open a terminal
-- Run `` cp config-example.yml config.yml ``
-- Run `` vim config.yml ``
+- Run `` cp app.env.example app.env ``
+- Run `` vim app.env ``
 - Set the desired value for your configurations and close the vim
 - Run `` go mod vendor  ``
 - Run `` go build -o news-pooler `` it will create a file call news-pooler
 - Run `` nohup ./news-pooler &`` it will run the application in the background
 - Open the browser and go to your desired port you provided in config.yml file
+
+# Run from docker
+
+- Run `` cp app.env.example app.env ``
+- Run `` vim app.env ``
+- ``` docker-compose up --build -d ```
+- ``` docker compose cp app:/src/vendor . ```
 
 # Contribution guideline
 Make these things more useful by contributing our brain and efforts. History will remember our contribution as far as lazy peoples like me are alive ;)
